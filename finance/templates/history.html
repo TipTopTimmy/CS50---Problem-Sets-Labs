@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+
+        <div class="container mt-3">
+            <h2>Transaction History</h2>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Transaction Type</th>
+                  <th>Ticker Symbol</th>
+                  <th>Current Price</th>
+                  <th>Shares Transacted</th>
+                  <th>Date/Time</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for stock in stocks %}
+                <tr>
+                  <td>{{ stock.trans_type }}</td>
+                  <td>{{ stock.symbol }}</td>
+                  <td>{{ stock.price | usd }}</td>
+                  <td>{{ stock.quantity }}</td>
+                  <td>{{ stock.time }}</td>
+              </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+    </div>
+{% endblock %}

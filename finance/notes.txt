@@ -1,0 +1,99 @@
+I. TODOs
+    A. Register
+        1. Accept GET and POST
+            i. GET: Display form to register for new account
+            ii. POST:
+                a. Check for errors i.e. missing UN or PW return apology
+                b. Insert new user in USERS table in finance.db
+                    1. apology if user exists
+                c. Log user in w/ session
+
+                @app.route("/login", methods=["GET", "POST"])
+def login():
+    """Log user in"""
+
+    # Forget any user_id
+    session.clear()
+
+    # User reached route via POST (as by submitting a form via POST)
+    if request.method == "POST":
+
+        # Ensure username was submitted
+        if not request.form.get("username"):
+            return apology("must provide username", 403)
+
+        # Ensure password was submitted
+        elif not request.form.get("password"):
+            return apology("must provide password", 403)
+
+        # Query database for username
+        rows = db.execute("SELECT * FROM users WHERE username = ?", request.form.get("username"))
+
+        # Ensure username exists and password is correct
+        if len(rows) != 1 or not check_password_hash(rows[0]["hash"], request.form.get("password")):
+            return apology("invalid username and/or password", 403)
+
+        # Remember which user has logged in
+        session["user_id"] = rows[0]["id"]
+
+        # Redirect user to home page
+        return redirect("/")
+
+    # User reached route via GET (as by clicking a link or via redirect)
+    else:
+        return render_template("login.html")
+        2.
+    B. Quote
+        1. ACCEPT GET and POST
+            i. GET
+                a. Disply form to request a stck ticker
+            ii. POST
+                a. Call Lookup function and display results.
+                    1. Lookup defined in helpers.py
+                    2. if symbol DNE apologize
+    C. Buy
+        2. Accept GET and Post
+            a. Get provides FORM
+                i. Input validation
+                ii. Create a new table that tracks stocks that each user owns
+                    1.
+                iii. Check user can afford stock purchase
+                iv. Update cash on hand
+            b. POST provides data
+
+    D. Index
+        1. Displays stocks user owns
+    E. Sell
+    F. History
+    G. Personal Touch
+        1. Charts/Graphs
+        2. Buy/Sell directly from index
+        3. Show amount profit/loss for each stock
+II. finance.db
+    1. User Table
+    2. Other tables may be needed...
+        a.
+
+
+
+
+
+
+DB
+userid
+symbol
+price
+# of Shares purchased
+date/time
+transaction_id
+
+CREATE TABLE transactions (transaction_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, user_id INTEGER NOT NULL, symbol TEXT NOT NULL, price NUMERIC NOT NULL, quantity INTEGER NOT NULL, cost INTEGER NOT NULL, transaction_time TIMESTAMP NOT NULL, FOREIGN KEY (user_id) REFERENCES users(id))
+
+
+SELECT * FROM users
+    JOIN transactions ON users.id = transactions.user_id
+    GROUP BY symbol
+
+
+
+    data[{"symbol":"value, "price": "value", "shares": "value"}"]

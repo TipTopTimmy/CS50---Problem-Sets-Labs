@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quote
+{% endblock %}
+
+{% block main %}
+    <div action = "/quote" method="get">
+        <p>Your purchase of X shares of {{ name }} costing {{ price }}</p>
+    </div>
+{% endblock %}

@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <h2>{{ cash | usd }}</h2>
+                <body>
+                    Cash
+                </body>
+            </div>
+            <div class="col">
+                <h2>{{ value | usd }}</h2>
+                <body>
+                    Portfolio Value
+                </body>
+            </div>
+            <div class="col">
+                <h2>{{ total | usd }}</h2>
+                <body>
+                    Total
+                </body>
+            </div>
+        </div>
+        <div class="container mt-3">
+            <h2>Account Summary</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Ticker Symbol</th>
+                        <th>Current Price</th>
+                        <th>Shares Owned</th>
+                        <th>Current Value</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for stock in stocks %}
+                    <tr>
+                        <td>{{ stock.symbol }}</td>
+                        <td>{{ stock.price | usd }}</td>
+                        <td>{{ stock.quantity }}</td>
+                        <td>{{ stock.value | usd }}</td>
+                        <td>
+                            <form action="/buy" method="post">
+                                <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="shares" placeholder="Number of Shares" type="number">
+                                <input type="hidden" name="symbol" value="{{ stock.symbol }}">
+                                <button class="btn btn-primary" type="submit">Buy</button>
+                            </form>
+                        </td>
+                        <td>
+                            <form action="/sell" method="post">
+                                <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="shares" placeholder="Number of Shares" type="number">
+                                <input type="hidden" name="symbol" value="{{ stock.symbol }}">
+                                <button class="btn btn-primary" type="submit">Sell</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
+
+
+

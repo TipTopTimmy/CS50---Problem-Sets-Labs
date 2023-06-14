@@ -1,0 +1,36 @@
+body {
+    padding-top: 1px;
+    color: white;
+    background: 
+  }
+
+  header {
+    margin-bottom: 1px;
+  }
+
+  footer {
+    margin-top: 1px;
+  }
+
+  .required {
+    color: red;
+  }
+
+  #instagram-slideshow {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  h1 {
+    color: green;
+  }
+  section {
+    margin-bottom: 1px;
+    margin-top: 1px;
+  }
+  h2 {
+    color: blue;
+  }
+  li {
+    color: yellow;
+  }
