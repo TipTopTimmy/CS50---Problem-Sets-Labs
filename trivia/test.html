@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+
+        <script>
+
+            // TODO: Add code to check answers to questions
+            document.addEventListener('DOMContentLoaded',function() {
+
+                //when correct answer is clicked, change color to green
+                let correct = document.query.Selector('.correct');
+                correct.addEventListener('click', function() {
+                    correct.style.backgroundColor = 'green';
+                    document.querySelector('#feedback1').innerHTML = 'Correct!';
+                });
+
+                //Change color to red on incorrect answer
+                let incorrects= document.querySelectorAll('.incorrect');
+                for (let i = 0; i < incorrects.length; i++){
+                        incorrects[i].addEventListener('click',function() {
+                            incorrects[i].style.backgroundColor = 'red';
+                            document.querySelector('#feedback1').innerHTML = 'Incorrect';
+                        });
+                };
+            }
+        </script>
+
+    </head>
+    <body>
+
+        <div class="jumbotron">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+
+                <!-- TODO: Add multiple choice question here -->
+                <h3>What soccer player has scored the most goals in international competitions? </h3>
+                    <button class="incorrect">Lionel Messi</button>
+                    <button class="incorrect">Pele</button>
+                    <button class="incorrect">Diego Maradona</button>
+                    <button class="correct">Cristiano Ronaldo</button>
+                    <button class="incorrect">Mia Hamm</button>
+
+                    <p id='feedback1'></p>
+
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+
+                <!-- TODO: Add free response question here -->
+                <h3>What is the best soccer team in the world?</h3>
+                        <form onsubmit="checkFreeResonse(); return false;">
+                            <input autocomplete="off" id="answer" placeholder="Type youre answer here..." type="text">
+                            <input type="submit">
+                        </form>
+
+                    <p id=feedback2 ></p>
+
+            </div>
+
+        </div>
+    </body>
+</html>

@@ -1,0 +1,14 @@
+sort1 uses: Bubble Sort
+
+How do you know?: For the random and reversed data sets, the results demonstrate an exponential growth curve.
+However, when the dataset is already sorted, the performance improves dramatically. This is indicative of O(n^2) and theta(n) behavior.
+
+sort2 uses: Merge Sort
+
+How do you know?: Merge sort is characterized by Omega(nlogn) behavior. Thus, the expectation for a merge sort algorithim is that it should be consistent across all data sets of similar sizes regardless of data order.
+For example, when there are 5000 data points the time to complete the algorithm is approximately .04 seconds no matter how the data is presented; random, reversed, or sorted. Additionally, sort2 is faster than other
+sort procedures in all cases except when the data is sorted. This is because a bubble sort would achieve its best performance in this instance and demonstrate theta(n) behavior.
+
+sort3 uses: Selection Sort
+
+How do you know?: Across all datasets of similar size the time to completion is roughly the same and demonstrates exponential behavior. 

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <script>
+            //Run Script when DOM loaded
+            document.addEventListener('DOMContentLoaded', function() {
+                //When Correct Answer Pressed
+                let correct = document.querySelector('.correct');
+                correct.addEventListener('click', function() {
+                    correct.style.backgroundColor = 'green';
+                    document.querySelector('#feedback1').innerHTML = 'CORRECT!';
+                });
+                let incorrects = document.querySelectorAll('.incorrect');
+                for (let i=0; i<incorrects.length; i++){
+                    incorrects[i].addEventListener('click', function(){
+                        incorrects[i].style.backgroundColor='red';
+                        document.querySelector('#feedback1').innerHTML = 'INCORRECT';
+                    });
+                }
+                //Check Free Response
+                document.querySelector('#check').addEventListener('click', function(){
+                    let input = document.querySelector('input');
+                    if (input.value === '42'){
+                        input.style.backgroundColor = 'green';
+                        document.querySelector('#feedback2').innerHTML = "CORRECT!"
+                    }else {
+                        input.style.backgroundColor = 'red';
+                        document.querySelector('#feedback2').innerHTML = "INCORRECT!!! YOUR SOUL WILL BURN IN HELL";
+                    }
+                });
+            });
+        </script>
+        <title> Trivia!</title>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+
+                <!-- TODO: Add multiple choice question here -->
+                    <h3>What do you get when you cross a pig, a man, and a bear?</h3>
+                    <button class = "incorrect" > Kyle's Mom </button>
+                    <button class = "incorrect" > Cartman </button>
+                    <button class = "correct"> Manbearpig </button>
+
+                    <p id = "feedback1"></p>
+            </div>
+        </div>
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+                <!-- TODO: Add free response question here -->
+                <h3>How much wood would a wood chuck, chuck if a wood chuck could chuck wood?</h3>
+                <input type="text"></input>
+                <button id="check">Check Answer</button>
+
+                <p id = "feedback2"></p>
+
+            </div>
+        </div>
+    </body>
+
+</html>

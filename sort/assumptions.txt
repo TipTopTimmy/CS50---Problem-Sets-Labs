@@ -1,0 +1,17 @@
+Selection Sort:     Worst Case O(n^2)
+                    Best Case theta(n^2)
+    Should be slow across all data sets.
+
+Bubble Sort:        Worst Case: O(n^2)
+                    Best Case: theta(n) (sorted)
+    Should see significant improvement when data set is sorted as compared to random data sets.
+    Will there worse performace when dataset is reversed as compared to selection sort?
+
+Merge Sort:         Worst Case: O(nlogn)
+                    Best Case : theta(nlogn)
+    May not be the fastest in every case but should remain consistent across all data sets of the same size.
+
+
+
+    Evaluation:
+    Plot data points and based on the shape of the graph determin its function. Bonus points if you can mathematically determine its function. n = sample size
